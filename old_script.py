@@ -15,4 +15,6 @@ for event in source.events:
     teachers.add(desc[3])
 
 for teacher in teachers:
-    print("<li>" + teacher + " - Lien: http://edt.alexscode.com:5000/edt/" + teacher.replace(" ", "%20") + "</li> ")
+    if teacher in {'!Intervenant "NOM" mis en note', 'L1 - Groupe 2', 'L1 Parcours Général G1'} or "(Exported :" in teacher:
+        continue
+    print("<li>" + teacher + ' - <a href="http://edt.alexscode.com/edt/' + teacher.replace(" ", "%20") + '">Lien</a> - http://edt.alexscode.com/edt/' + teacher.replace(" ", "%20") + "</li> ")
