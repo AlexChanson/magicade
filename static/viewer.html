@@ -32,8 +32,9 @@
       maxTime: "20:00:00",
     });
 
+    //'https://cors-anywhere.herokuapp.com/'+
     $('#fetch').click(function () {
-      $.get('https://cors-anywhere.herokuapp.com/'+"http://edt.alexscode.com/edt/"+$('#eventsource').val(), function (res) {
+      $.get("http://edt.alexscode.com/edt/"+$('#eventsource').val(), function (res) {
         var events = []
         var parsed = ICAL.parse(res);
         parsed[2].forEach(function(event) {
