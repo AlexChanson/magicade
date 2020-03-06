@@ -39,10 +39,12 @@
         var parsed = ICAL.parse(res);
 
         console.log(parsed);
-        parsed[2].forEach(function(event) {
-          if (event[0] !== 'vevent') return;
-          var summary, location, start, end;
-          event[1].forEach(function(event_item){
+        for (const event of parsed[2]) {
+          if (event[0] !== 'vevent')
+              continue;
+          let summary, location, start, end;
+
+          for (const event_item of event[1]) {
             switch(event_item[0]){
               case 'location':
                 location = event_item[3];
@@ -66,9 +68,11 @@
                 location: location
               })
             }
-          })
-        });
-        console.log(events);
+          }
+        }
+          console.log(events);
+        let unique = [...new Set(names)];
+          console.log(unique);
         $('#calendar').fullCalendar('removeEventSources');
         $('#calendar').fullCalendar('addEventSource', events);
         $('#eventsource').val('');
