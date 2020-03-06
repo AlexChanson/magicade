@@ -35,28 +35,31 @@
     //'https://cors-anywhere.herokuapp.com/'+
     $('#fetch').click(function () {
       $.get("http://edt.alexscode.com/edt/"+$('#eventsource').val(), function (res) {
-        var events = []
+        var events = [];
         var parsed = ICAL.parse(res);
         parsed[2].forEach(function(event) {
-          if (event[0] !== 'vevent') return
+          if (event[0] !== 'vevent') return;
           var summary, location, start, end;
           event[1].forEach(function(event_item){
             switch(event_item[0]){
               case 'location':
-                location = event_item[3]
+                location = event_item[3];
                 break;
               case 'summary':
-                summary = event_item[3]
+                summary = event_item[3];
                 break;
               case 'dtstart':
-                start = event_item[3]
+                start = event_item[3];
                 break;
               case 'dtend':
-                end = event_item[3]
+                end = event_item[3];
                 break;
+                case 'description' :
+                    console.log(event_item[3]);
+                    break;
             }
             if (summary && location && start && end) {
-              console.log(summary, 'at', start)
+              console.log(summary, 'at', start);
               events.push({
                 title: summary,
                 start: start,
@@ -66,7 +69,7 @@
             }
           })
         });
-        $('#calendar').fullCalendar('removeEventSources')
+        $('#calendar').fullCalendar('removeEventSources');
         $('#calendar').fullCalendar('addEventSource', events);
         $('#eventsource').val('');
       })
