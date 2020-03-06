@@ -41,6 +41,7 @@
           if (event[0] !== 'vevent') return;
           var summary, location, start, end;
           event[1].forEach(function(event_item){
+              console.log(event_item);
             switch(event_item[0]){
               case 'location':
                 location = event_item[3];
@@ -54,9 +55,6 @@
               case 'dtend':
                 end = event_item[3];
                 break;
-                case 'description' :
-                    console.log(event_item[3]);
-                    break;
             }
             if (summary && location && start && end) {
               console.log(summary, 'at', start);
