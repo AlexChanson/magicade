@@ -37,11 +37,12 @@
       $.get("http://edt.alexscode.com/edt/"+$('#eventsource').val(), function (res) {
         var events = [];
         var parsed = ICAL.parse(res);
+
+        console.log(parsed);
         parsed[2].forEach(function(event) {
           if (event[0] !== 'vevent') return;
           var summary, location, start, end;
           event[1].forEach(function(event_item){
-              console.log(event_item);
             switch(event_item[0]){
               case 'location':
                 location = event_item[3];
@@ -67,6 +68,7 @@
             }
           })
         });
+        console.log(events);
         $('#calendar').fullCalendar('removeEventSources');
         $('#calendar').fullCalendar('addEventSource', events);
         $('#eventsource').val('');
