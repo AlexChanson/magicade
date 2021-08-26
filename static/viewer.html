@@ -34,7 +34,7 @@
 
     //'https://cors-anywhere.herokuapp.com/'+
     $('#fetch').click(function () {
-      $.get("https://edt.alexscode.com/edt/"+$('#eventsource').val(), function (res) {
+      $.get("https://easyade.herokuapp.com/edt/"+$('#eventsource').val(), function (res) {
         var events = [];
         var parsed = ICAL.parse(res);
 
