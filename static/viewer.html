@@ -74,7 +74,7 @@
         let unique = [...new Set(events)];
           console.log(unique);
         $('#calendar').fullCalendar('removeEventSources');
-        $('#calendar').fullCalendar('addEventSource', events);
+        $('#calendar').fullCalendar('addEventSource', unique);
         $('#eventsource').val('');
       })
     })
