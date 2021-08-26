@@ -13,7 +13,7 @@ cache_opts = {
     'cache.lock_dir': 'data/tmp/cache/lock'
 }
 
-url = "http://ade.univ-tours.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=ca4182f302426b0cdf58fd19a72c4dbe31b66c493702208e664667048bc043732a2c262ab3ba48506729f6560ae33af6fc01170004907f5cc88c870a3a988597,1"
+url = "http://ade.univ-tours.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=ca4182f302426b0cdf58fd19a72c4dbe1c189d41b00373c599e0bd1e37f2c34657d58ab4c63f8fe92968762d8416ed8d6aad19fe006b760288bd644fb363dc02,1"
 
 cache = CacheManager(**parse_cache_config_options(cache_opts))
 app = Flask(__name__)
