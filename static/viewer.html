@@ -70,11 +70,15 @@
             }
           }
         }
-          console.log(events);
-        let unique = [...new Set(events)];
-          console.log(unique);
+
+        events = events.filter((thing, index, self) =>
+          index === self.findIndex((t) => (
+            t.title === thing.title && t.start === thing.start && t.end === thing.end
+          ))
+        )
+
         $('#calendar').fullCalendar('removeEventSources');
-        $('#calendar').fullCalendar('addEventSource', unique);
+        $('#calendar').fullCalendar('addEventSource', events);
         $('#eventsource').val('');
       })
     })
