@@ -60,9 +60,9 @@
                 break;
             }
             if (summary && location && start && end) {
-              console.log(summary, 'at', start);
+              console.log(summary, 'at', location);
               events.push({
-                title: summary,
+                title: summary + " - " + location,
                 start: start,
                 end: end,
                 location: location
