@@ -22,7 +22,7 @@ app = Flask(__name__)
 def root():
     return app.send_static_file('index.html')
 
-@app.route("/clear_cahces")
+@app.route("/clear_caches")
 def empty_cache():
     from beaker.cache import cache_managers
     for _cache in cache_managers.values():
