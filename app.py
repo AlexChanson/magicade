@@ -14,7 +14,6 @@ cache_opts = {
 }
 
 url = "http://ade.univ-tours.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=ca4182f302426b0cdf58fd19a72c4dbe1c189d41b00373c599e0bd1e37f2c34657d58ab4c63f8fe92968762d8416ed8d6aad19fe006b760288bd644fb363dc02,1"
-
 cache = CacheManager(**parse_cache_config_options(cache_opts))
 app = Flask(__name__)
 
