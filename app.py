@@ -22,6 +22,13 @@ app = Flask(__name__)
 def root():
     return app.send_static_file('index.html')
 
+@app.route("/clear_cahces")
+def empty_cache():
+    from beaker.cache import cache_managers
+    for _cache in cache_managers.values():
+        _cache.clear()
+    return fl.Response("cache cleared")
+
 
 @app.route('/edt/<string:teacher_name>')
 def show_edt(teacher_name):
