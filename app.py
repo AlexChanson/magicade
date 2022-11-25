@@ -47,10 +47,9 @@ def parse_edt(teacher_name):
 
     for event in source.events:
         desc = event.description
-        if teacher_name.lower() in desc.lower():
+        if str(teacher_name).lower() in desc.lower():
             clean.events.add(event)
 
-    print(clean)
     return str(clean)
 
 
