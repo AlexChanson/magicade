@@ -14,6 +14,8 @@ cache_opts = {
 }
 
 url = "http://ade.univ-tours.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=ca4182f302426b0cdf58fd19a72c4dbec49a74fae5535d80911af2f48666394e57d58ab4c63f8fe92968762d8416ed8d6aad19fe006b760288bd644fb363dc02,1"
+url_di = "http://ade.univ-tours.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=489795bdf590a7be836420d44454808bc49a74fae5535d80911af2f48666394e57d58ab4c63f8fe92968762d8416ed8d6aad19fe006b760288bd644fb363dc02,1"
+di_guys = ["t'kindt", "ramel", "cardot"]
 cache = CacheManager(**parse_cache_config_options(cache_opts))
 app = Flask(__name__)
 
@@ -42,7 +44,10 @@ def show_edt(teacher_name):
 
 @cache.cache('show_edt', expire=3600)
 def parse_edt(teacher_name):
-    source = fetch_all()
+    if teacher_name.lower() in di_guys:
+        source = fetch_all_di()
+    else:
+        source = fetch_all()
     clean = Calendar()
 
     for event in source.events:
@@ -57,6 +62,9 @@ def parse_edt(teacher_name):
 def fetch_all():
     return Calendar(urlopen(url).read().decode())
 
+@cache.cache('fetch_all', expire=1800)
+def fetch_all_di():
+    return Calendar(urlopen(url_di).read().decode())
 
 if __name__ == '__main__':
     app.run()
